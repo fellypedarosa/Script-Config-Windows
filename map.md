@@ -9,6 +9,17 @@
 │   └── Shodo.txt
 │
 ├── 📁 Dependencias
+|   ├── 📁 certificado
+|   |   ├── leitora.exe
+|   |   ├── SafeSign.exe
+|   |   └── USB.exe
+|   ├── 📁 office
+|   |   ├── configuration.xml
+|   |   └── setup.exe
+|   ├── 📁 PJE
+|   |   └── pjeoffice.exe
+|   ├── 📁 shodo
+|   |   └── shodo.msi
 │   ├── UI.Appx
 │   ├── VisualC.Appx
 │   └── winget.Msixbundle
