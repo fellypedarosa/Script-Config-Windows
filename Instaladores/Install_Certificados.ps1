@@ -1,0 +1,1 @@
+Write-Host "Executando Certificados.ps1"

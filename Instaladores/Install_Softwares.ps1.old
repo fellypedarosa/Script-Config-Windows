@@ -1,0 +1,17 @@
+Write-Host "`n-- INSTALACAO DE SOFTWARES --" -ForegroundColor Cyan
+
+# Google Chrome
+Write-Host "Instalando Google Chrome..."
+winget install --id=Google.Chrome --source winget -e --silent
+
+# Adobe Reader
+Write-Host "Instalando Adobe Acrobat Reader..."
+winget install --id=Adobe.Acrobat.Reader.64-bit --source winget -e --silent
+
+# 7-Zip
+Write-Host "Instalando 7-Zip..."
+winget install --id=7zip.7zip --source winget -e --silent
+
+# VLC
+Write-Host "Instalando VLC Media Player..."
+winget install --id=VideoLAN.VLC --source winget -e --silent

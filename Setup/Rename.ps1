@@ -1,0 +1,1 @@
+Write-Host "Executando Rename.ps1"
