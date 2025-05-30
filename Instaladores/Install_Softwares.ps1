@@ -30,4 +30,8 @@ winget install --id=VideoLAN.VLC --source winget -e --silent
 Write-Host "Instalando PDFsam..."
 winget install --id=PDFsam.PDFsam --source winget -e --silent
 
+# Firefox
+Write-Host "Instalando Mozilla Firefox..."
+winget install --id=Mozilla.Firefox --source winget -e --silent
+
 Write-Host "`nTodos os programas foram instalados." -ForegroundColor Green

@@ -31,7 +31,7 @@ if (Get-Command winget -ErrorAction SilentlyContinue) {
 }
 
 # 3. Politica de execucao
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+# Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 
 # 4. (Comentado) Reinicializacao opcional
 # Write-Host "Reiniciando sistema para aplicar configuracoes..." -ForegroundColor Yellow
