@@ -20,8 +20,8 @@ Write-Host "`n==> Instalando softwares principais..." -ForegroundColor Cyan
 $ConfirmPath = "$env:HOMEDRIVE\SCRIPT 2.0\confirm"
 
 # 5. INSTALAÇÃO OPCIONAL - OFFICE
-$O365File = Join-Path $ConfirmPath "O365.txt"
-if ((Test-Path $O365File) -and ((Get-Content $O365File) -eq 'Sim')) {
+$OfficeFile = Join-Path $ConfirmPath "Office.txt"
+if ((Test-Path $OfficeFile) -and ((Get-Content $OfficeFile) -eq 'Sim')) {
     Write-Host "`n==> Instalando Microsoft Office..." -ForegroundColor Cyan
     & "$PSScriptRoot\Instaladores\Install_Office.ps1"
 }
