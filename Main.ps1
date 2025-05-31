@@ -22,7 +22,7 @@ $ConfirmPath = "$env:HOMEDRIVE\SCRIPT 2.0\confirm"
 # 5. INSTALAÇÃO OPCIONAL - OFFICE
 $OfficeFile = Join-Path $ConfirmPath "Office.txt"
 if ((Test-Path $OfficeFile) -and ((Get-Content $OfficeFile) -eq 'Sim')) {
-    Write-Host "`n==> Instalando Microsoft Office..." -ForegroundColor Cyan
+    Write-Host "`n==> Certo vamos instalar o Office 365..." -ForegroundColor Cyan
     & "$PSScriptRoot\Instaladores\Install_Office.ps1"
 }
 

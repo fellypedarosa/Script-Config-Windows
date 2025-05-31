@@ -20,6 +20,8 @@
 |   |   └── pjeoffice.exe
 |   ├── 📁 shodo
 |   |   └── shodo.msi
+|   ├── 📁 Take_Control
+|   |   └── Take_Control
 │   ├── UI.Appx
 │   ├── VisualC.Appx
 │   └── winget.Msixbundle
@@ -32,8 +34,7 @@
 │   ├── Install_Office.ps1
 │   ├── Install_PJE.ps1
 │   ├── Install_Shodo.ps1
-│   ├── Install_Softwares.ps1
-│   └── Take_Control.msi
+│   └── Install_Softwares.ps1
 │
 ├── 📁 Setup
 │   ├── Config.ps1
