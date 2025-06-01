@@ -1,6 +1,6 @@
 # Mapa de Funcionalidades - Script 2.0
 
-Este documento resume as funcionalidades presentes nos scripts da versão antiga do instalador da Rastek. Ele serve como base para revisão e refinamento da nova versão `SCRIPT 2.0`.
+Este documento resume as funcionalidades presentes no `SCRIPT 2.0`.
 
 ---
 
@@ -43,9 +43,9 @@ Este documento resume as funcionalidades presentes nos scripts da versão antiga
 
 ### 5. `Install_Certificados.ps1`
 - Instala drivers de token (via instaladores):
-  - SafeNet
-  - GD e-CNPJ
-  - SmartCard (se aplicável)
+  - SafeSign
+  - USB
+  - leitora
 
 ### 6. `Install_Office.ps1`
 - Executa instalador do Office com configuração silenciosa caso tenha sido solicitado.
