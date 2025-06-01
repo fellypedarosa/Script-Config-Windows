@@ -1,6 +1,6 @@
 # MAIN.PS1 - Script principal de automação Rastek
 
-# 1. CONFIGURAÇÕES INICIAIS (energia, permissões, repositórios)
+# 1. CONFIGURAÇÕES INICIAIS (energia, atualização, repositórios)
 Write-Host "`n==> Executando configuracoes iniciais..." -ForegroundColor Cyan
 & "$PSScriptRoot\Setup\Config.ps1"
 
