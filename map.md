@@ -10,16 +10,15 @@
 │
 ├── 📁 Dependencias
 |   ├── 📁 certificado
-|   |   ├── leitora.exe
-|   |   ├── SafeSign.exe
+|   |   ├── leitora.msi
+|   |   ├── SafeSign.msi
+|   |   ├── shodo.msi
 |   |   └── USB.exe
 |   ├── 📁 office
 |   |   ├── configuration.xml
 |   |   └── setup.exe
 |   ├── 📁 PJE
 |   |   └── pjeoffice.exe
-|   ├── 📁 shodo
-|   |   └── shodo.msi
 |   ├── 📁 Take_Control
 |   |   └── Take_Control
 │   ├── UI.Appx

@@ -40,20 +40,13 @@ if ((Test-Path $CertFile) -and ((Get-Content $CertFile) -eq 'Sim')) {
     & "$PSScriptRoot\Instaladores\Install_Certificados.ps1"
 }
 
-# 8. INSTALAÇÃO OPCIONAL - SHODO
-$ShodoFile = Join-Path $ConfirmPath "Shodo.txt"
-if ((Test-Path $ShodoFile) -and ((Get-Content $ShodoFile) -eq 'Sim')) {
-    Write-Host "`n==> Instalando Shodo..." -ForegroundColor Cyan
-    & "$PSScriptRoot\Instaladores\Install_Shodo.ps1"
-}
-
-# 9. FINALIZAÇÃO - AGENDAR SCRIPT PÓS-REBOOT (se necessário)
+# 8. FINALIZAÇÃO - AGENDAR SCRIPT PÓS-REBOOT (se necessário)
 Write-Host "`n==> Agendando execucao pos-reboot..." -ForegroundColor Cyan
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" `
   -Name "Rastek_AposReinicio" `
   -Value "powershell.exe -ExecutionPolicy Bypass -File $env:HOMEDRIVE\SCRIPT 2.0\Final\RunAfterReboot.ps1"
 
-# 10. REINICIAR SISTEMA
+# 9. REINICIAR SISTEMA
 Write-Host "`n==> Reiniciando sistema em 30 segundos..." -ForegroundColor Yellow
 #shutdown.exe -r -f -t 30
 

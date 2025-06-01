@@ -1,1 +1,0 @@
-Write-Host "Executando Shodo.ps1"
