@@ -26,27 +26,20 @@ if ((Test-Path $OfficeFile) -and ((Get-Content $OfficeFile) -eq 'Sim')) {
     & "$PSScriptRoot\Instaladores\Install_Office.ps1"
 }
 
-# 6. INSTALAÇÃO OPCIONAL - PJE OFFICE
-$PJEFile = Join-Path $ConfirmPath "PJE.txt"
-if ((Test-Path $PJEFile) -and ((Get-Content $PJEFile) -eq 'Sim')) {
-    Write-Host "`n==> Instalando PJE Office..." -ForegroundColor Cyan
-    & "$PSScriptRoot\Instaladores\Install_PJE.ps1"
+# 6. INSTALAÇÃO OPCIONAL - ADVOGADOS
+$advFile = Join-Path $ConfirmPath "ADV.txt"
+if ((Test-Path $advFile) -and ((Get-Content $advFile) -eq 'Sim')) {
+    Write-Host "`n==> Instalando apps dos advogados..." -ForegroundColor Cyan
+    & "$PSScriptRoot\Instaladores\Install_ADV.ps1"
 }
 
-# 7. INSTALAÇÃO OPCIONAL - CERTIFICADOS
-$CertFile = Join-Path $ConfirmPath "Certificados.txt"
-if ((Test-Path $CertFile) -and ((Get-Content $CertFile) -eq 'Sim')) {
-    Write-Host "`n==> Instalando drivers de certificados..." -ForegroundColor Cyan
-    & "$PSScriptRoot\Instaladores\Install_Certificados.ps1"
-}
-
-# 8. FINALIZAÇÃO - AGENDAR SCRIPT PÓS-REBOOT (se necessário)
+# 7. FINALIZAÇÃO - AGENDAR SCRIPT PÓS-REBOOT (se necessário)
 Write-Host "`n==> Agendando execucao pos-reboot..." -ForegroundColor Cyan
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" `
   -Name "Rastek_AposReinicio" `
   -Value "powershell.exe -ExecutionPolicy Bypass -File $env:HOMEDRIVE\SCRIPT 2.0\Final\RunAfterReboot.ps1"
 
-# 9. REINICIAR SISTEMA
+# 8. REINICIAR SISTEMA
 Write-Host "`n==> Reiniciando sistema em 30 segundos..." -ForegroundColor Yellow
 #shutdown.exe -r -f -t 30
 

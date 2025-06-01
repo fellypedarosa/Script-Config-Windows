@@ -20,8 +20,7 @@ do {
     $advogado = Read-Host "Este computador sera utilizado por advogado? (S/N)"
 } while ($advogado -notin @("S", "N"))
 
-$pje = $cert = $shodo = if ($advogado -eq "S") { "Sim" } else { "Nao" }
+$adv = if ($advogado -eq "S") { "Sim" } else { "Nao" }
 
-$pje     | Out-File -FilePath "$confirmPath\PJE.txt" -Encoding UTF8
-$cert    | Out-File -FilePath "$confirmPath\Certificados.txt" -Encoding UTF8
-$shodo   | Out-File -FilePath "$confirmPath\Shodo.txt" -Encoding UTF8
+$adv     | Out-File -FilePath "$confirmPath\ADV.txt" -Encoding UTF8
+

@@ -1,0 +1,64 @@
+# Caminhos das flags
+$leitoraFlag  = "$PSScriptRoot\leitora.txt"
+$safesignFlag = "$PSScriptRoot\safesign.txt"
+$shodoFlag    = "$PSScriptRoot\shodo.txt"
+$usbFlag      = "$PSScriptRoot\usb.txt"
+$pjeFlag      = "$PSScriptRoot\PJE.txt"
+
+# Caminho base dos instaladores
+$base = Resolve-Path "$PSScriptRoot\..\Dependencias\ADV"
+$leitoraMSI  = Join-Path $base "leitora.msi"
+$safesignMSI = Join-Path $base "safesign.msi"
+$shodoMSI    = Join-Path $base "shodo.msi"
+$usbEXE      = Join-Path $base "USB.exe"
+$pjeEXE      = Join-Path $base "pjeoffice.exe"
+
+# Instala Leitora
+if (!(Test-Path $leitoraFlag)) {
+    Write-Host "Instalando Leitora.msi..."
+    Start-Process "msiexec.exe" -ArgumentList "/i `"$leitoraMSI`" /qn /norestart" -Wait
+    New-Item -Path $leitoraFlag -ItemType File -Force | Out-Null
+    Write-Host "Leitora de cartao instalada com sucesso."
+} else {
+    Write-Host "Leitora de cartao ja instalada. Pulando..."
+}
+
+# Instala SafeSign
+if (!(Test-Path $safesignFlag)) {
+    Write-Host "Instalando SafeSign.msi..."
+    Start-Process "msiexec.exe" -ArgumentList "/i `"$safesignMSI`" /qn /norestart" -Wait
+    New-Item -Path $safesignFlag -ItemType File -Force | Out-Null
+    Write-Host "SafeSign instalado com sucesso."
+} else {
+    Write-Host "SafeSign ja instalado. Pulando..."
+}
+
+# Instala Shodo
+if (!(Test-Path $shodoFlag)) {
+    Write-Host "Instalando Shodo.msi..."
+    Start-Process "msiexec.exe" -ArgumentList "/i `"$shodoMSI`" /qn /norestart" -Wait
+    New-Item -Path $shodoFlag -ItemType File -Force | Out-Null
+    Write-Host "Shodo instalado com sucesso."
+} else {
+    Write-Host "Shodo ja instalado. Pulando..."
+}
+
+# Instala USB.exe
+if (!(Test-Path $usbFlag)) {
+    Write-Host "Instalando USB.exe..."
+    Start-Process -FilePath $usbEXE -ArgumentList "/silent" -Wait
+    New-Item -Path $usbFlag -ItemType File -Force | Out-Null
+    Write-Host "Drive USB instalado com sucesso."
+} else {
+    Write-Host "Drive USB ja instalado. Pulando..."
+}
+
+# Instala PJeOffice
+if (!(Test-Path $pjeFlag)) {
+    Write-Host "Instalando PJe Office..."
+    Start-Process -FilePath $pjeEXE -ArgumentList "/silent" -Wait
+    New-Item -Path $pjeFlag -ItemType File -Force | Out-Null
+    Write-Host "PJe Office instalado com sucesso."
+} else {
+    Write-Host "PJe Office ja instalado. Pulando..."
+}

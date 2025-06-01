@@ -13,12 +13,11 @@
 |   |   ├── leitora.msi
 |   |   ├── SafeSign.msi
 |   |   ├── shodo.msi
+|   |   ├── pjeoffice.exe
 |   |   └── USB.exe
 |   ├── 📁 office
 |   |   ├── configuration.xml
 |   |   └── setup.exe
-|   ├── 📁 PJE
-|   |   └── pjeoffice.exe
 |   ├── 📁 Take_Control
 |   |   └── Take_Control
 │   ├── UI.Appx
@@ -29,10 +28,8 @@
 │   └── RunAfterReboot.ps1
 │
 ├── 📁 Instaladores
-│   ├── Install_Certificados.ps1
+│   ├── Install_ADV.ps1
 │   ├── Install_Office.ps1
-│   ├── Install_PJE.ps1
-│   ├── Install_Shodo.ps1
 │   └── Install_Softwares.ps1
 │
 ├── 📁 Setup
