@@ -66,7 +66,7 @@ Este documento resume as funcionalidades presentes no `SCRIPT 2.0`.
 ### 9. `RunAfterReboot.ps1`
 - Executa ações após o reboot:
   - Apaga pastas temporárias e a pasta do Script 2.0.
-  - Verifica se tem um usuário chamado rtk.sup. Caso tenha, troca a senha do usuario para r4st3kt1!
+  - Verifica se tem um usuário chamado rtk.sup. Caso tenha, troca a senha do usuario
   - Gera log de conclusão dentro de uma pasta que será criada em C:\TI.
   - Reinicia a máquina, se necessário.
 

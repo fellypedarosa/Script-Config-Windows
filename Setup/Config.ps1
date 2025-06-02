@@ -32,23 +32,3 @@ if (Get-Command winget -ErrorAction SilentlyContinue) {
 
 # 3. Politica de execucao
  Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
-
-# 4. Atualização
-Write-Host "`n==> Verificando atualizacoes do Windows..." -ForegroundColor Cyan
-
-if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate)) {
-    Write-Host "Instalando modulo PSWindowsUpdate..."
-    Install-PackageProvider -Name NuGet -Force | Out-Null
-    Install-Module -Name PSWindowsUpdate -Force -Confirm:$false
-}
-
-Import-Module PSWindowsUpdate
-
-# Executa atualização (sem interação, sem reboot automático)
-Get-WindowsUpdate -AcceptAll -Install -IgnoreReboot
-Write-Host "Atualizacoes aplicadas. Reboot manual pode ser necessario." -ForegroundColor Yellow
-
-
-# 4. (Comentado) Reinicializacao opcional
-# Write-Host "Reiniciando sistema para aplicar configuracoes..." -ForegroundColor Yellow
-# shutdown.exe -r -f -t 30
