@@ -28,7 +28,7 @@ Write-Host "`n==> Instalando softwares principais..." -ForegroundColor Cyan
 & "$PSScriptRoot\Instaladores\Install_Softwares.ps1"
 
 # Caminho base da pasta de confirmação
-$ConfirmPath = "$env:HOMEDRIVE\SCRIPT 2.0\confirm"
+$ConfirmPath = "$env:HOMEDRIVE\SCRIPT.2.0\confirm"
 
 # 6. INSTALAÇÃO OPCIONAL - OFFICE
 $OfficeFile = Join-Path $ConfirmPath "Office.txt"
@@ -48,7 +48,7 @@ if ((Test-Path $advFile) -and ((Get-Content $advFile) -eq 'Sim')) {
 Write-Host "`n==> Agendando execucao pos-reboot..." -ForegroundColor Cyan
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" `
   -Name "Rastek_AposReinicio" `
-  -Value "powershell.exe -ExecutionPolicy Bypass -File $env:HOMEDRIVE\SCRIPT 2.0\Final\RunAfterReboot.ps1"
+  -Value "powershell.exe -ExecutionPolicy Bypass -File $env:HOMEDRIVE\SCRIPT.2.0\Final\RunAfterReboot.ps1"
 
 # 9. REINICIAR SISTEMA
 Write-Host "`n==> Reiniciando sistema em 30 segundos..." -ForegroundColor Yellow

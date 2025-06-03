@@ -2,7 +2,7 @@ Write-Host "`n-- INSTALACAO DOS SOFTWARES PADROES (SEQUENCIAL) --" -ForegroundCo
 
 # Take Control
 Write-Host "Instalando Take Control..."
-#$path = "C:\SCRIPT 2.0\Dependencias\Take_Control\Take_Control.msi"
+#$path = "C:\SCRIPT.2.0\Dependencias\Take_Control\Take_Control.msi"
 #Start-Process "msiexec.exe" -ArgumentList "/i `"$path`" /qn /norestart" -Wait
 Write-Host "Take Control instalado."
 

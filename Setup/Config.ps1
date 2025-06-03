@@ -14,7 +14,7 @@ if (Get-Command winget -ErrorAction SilentlyContinue) {
 } else {
     Write-Host "Winget nao encontrado. Instalando offline..." -ForegroundColor Yellow
 
-    $depPath = "C:\SCRIPT 2.0\Dependencias"
+    $depPath = "C:\SCRIPT.2.0\Dependencias"
 
     try {
         Add-AppxPackage "$depPath\VisualC.Appx"
