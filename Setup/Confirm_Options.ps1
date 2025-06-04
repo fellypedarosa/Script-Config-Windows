@@ -1,5 +1,5 @@
 # Caminho para salvar os arquivos de confirmacao
-$confirmPath = "C:\SCRIPT.2.0\confirm"
+$confirmPath = "C:\SCRIPT.2.0\confirm\"
 if (!(Test-Path -Path $confirmPath)) {
     New-Item -Path $confirmPath -ItemType Directory | Out-Null
 }

@@ -4,11 +4,31 @@
 Write-Host "`n==> Executando configuracoes iniciais..." -ForegroundColor Cyan
 & "$PSScriptRoot\Setup\Config.ps1"
 
+$confirmPath = "C:\SCRIPT.2.0\confirm"
+$renameFile = Join-Path $confirmPath "rename.txt"
+
+if ((Test-Path $renameFile)) {
+    Write-Host "`n==> Nome atualizado..." -ForegroundColor Green
+}
 # 2. RENOMEIA O COMPUTADOR
+else {
 Write-Host "`n==> Renomeando computador..." -ForegroundColor Cyan
 & "$PSScriptRoot\Setup\Rename.ps1"
+}
+# Verifica se os arquivos de confirmação já existem
+$advFile = Join-Path $confirmPath "ADV.txt"
+$officeFile = Join-Path $confirmPath "Office.txt"
 
-# 3. VERIFICA SE DEVE INSTALAR ATUALIZACOES DO WINDOWS
+if ((Test-Path $advFile) -and (Test-Path $officeFile)) {
+    Write-Host "`n==> Respostas ja confirmadas anteriormente. Pulando instalacoes opcionais..." -ForegroundColor Green
+}
+else {
+    # 3. CONFIRMA INSTALAÇÕES OPCIONAIS (Apps de ADV e Office 365.)
+    Write-Host "`n==> Perguntas sobre instalacoes opcionais..." -ForegroundColor Cyan
+    & "$PSScriptRoot\Setup\Confirm_Options.ps1"
+}
+
+# 4. VERIFICA SE DEVE INSTALAR ATUALIZACOES DO WINDOWS
 $updateFlagPath = "$PSScriptRoot\Dependencias\Update\update.txt"
 if ((Test-Path $updateFlagPath) -and ((Get-Content $updateFlagPath) -eq 'Sim')) {
     Write-Host "`n==> Windows ja atualizado. Pulando atualizacoes..." -ForegroundColor Green
@@ -18,17 +38,9 @@ else {
     & "$PSScriptRoot\Setup\Install_Updates.ps1"
     exit
 }
-
-# 4. CONFIRMA INSTALAÇÕES OPCIONAIS (PJE, Certificados, etc.)
-Write-Host "`n==> Perguntas sobre instalacoes opcionais..." -ForegroundColor Cyan
-& "$PSScriptRoot\Setup\Confirm_Options.ps1"
-
 # 5. INSTALA SOFTWARES ESSENCIAIS COM WINGET (Chrome, Adobe, etc.)
 Write-Host "`n==> Instalando softwares principais..." -ForegroundColor Cyan
 & "$PSScriptRoot\Instaladores\Install_Softwares.ps1"
-
-# Caminho base da pasta de confirmação
-$ConfirmPath = "$env:HOMEDRIVE\SCRIPT.2.0\confirm"
 
 # 6. INSTALAÇÃO OPCIONAL - OFFICE
 $OfficeFile = Join-Path $ConfirmPath "Office.txt"
@@ -38,22 +50,15 @@ if ((Test-Path $OfficeFile) -and ((Get-Content $OfficeFile) -eq 'Sim')) {
 }
 
 # 7. INSTALAÇÃO OPCIONAL - ADVOGADOS
-$advFile = Join-Path $ConfirmPath "ADV.txt"
 if ((Test-Path $advFile) -and ((Get-Content $advFile) -eq 'Sim')) {
     Write-Host "`n==> Instalando apps dos advogados..." -ForegroundColor Cyan
     & "$PSScriptRoot\Instaladores\Install_ADV.ps1"
 }
 
-# 8. FINALIZAÇÃO - AGENDAR SCRIPT PÓS-REBOOT (se necessário)
-Write-Host "`n==> Agendando execucao pos-reboot..." -ForegroundColor Cyan
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" `
-  -Name "Rastek_AposReinicio" `
-  -Value "powershell.exe -ExecutionPolicy Bypass -File $env:HOMEDRIVE\SCRIPT.2.0\Final\RunAfterReboot.ps1"
-
-# 9. REINICIAR SISTEMA
-Write-Host "`n==> Reiniciando sistema em 30 segundos..." -ForegroundColor Yellow
-#shutdown.exe -r -f -t 30
+# 8. REINICIAR SISTEMA
+Write-Host "`n==> Reiniciando sistema em 15 segundos..." -ForegroundColor Yellow
+shutdown.exe -r -f -t 15
 
 #Temp
-Write-Host "`nPressione qualquer tecla para continuar..." -ForegroundColor Yellow
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+#Write-Host "`nPressione qualquer tecla para continuar..." -ForegroundColor Yellow
+#$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
