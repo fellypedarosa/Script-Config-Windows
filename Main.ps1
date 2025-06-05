@@ -40,8 +40,8 @@ else {
     exit
 }
 # 5. INSTALA SOFTWARES ESSENCIAIS COM WINGET (Chrome, Adobe, etc.)
-#Write-Host "`n==> Instalando softwares principais..." -ForegroundColor Cyan
-#& "$PSScriptRoot\Instaladores\Install_Softwares.ps1"
+Write-Host "`n==> Instalando softwares principais..." -ForegroundColor Cyan
+& "$PSScriptRoot\Instaladores\Install_Softwares.ps1"
 
 # 6. INSTALAÇÃO OPCIONAL - OFFICE
 $OfficeFile = Join-Path $ConfirmPath "Office.txt"

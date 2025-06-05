@@ -13,16 +13,13 @@ Set-Content -Path $updateFlag -Value "Sim"
 
 # Aguarda a conclusão do processo de atualização
 Write-Host "`n==> Aguardando 30 minutos para aplicacao das atualizacoes..." -ForegroundColor Cyan
-Start-Sleep -Seconds 300 #1800
+Start-Sleep -Seconds 1800
 
 #Permissão para executar scripts
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 
 # Agendar retomada com RunOnce
-$scriptPath = "C:\SCRIPT.2.0\Final\RunAfterReboot.ps1"
-Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce" `
-  -Name "ResumeScript" `
-  -Value "powershell.exe -ExecutionPolicy Bypass -NoProfile -File `"$scriptPath`""
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -Name Restark_AposReinicio -Value "powershell -ExecutionPolicy Bypass -File C:\SCRIPT.2.0\Final\RunAfterReboot.ps1"
 
 # Reinicia
 Write-Host "`n==> Reiniciando sistema em 10 segundos..." -ForegroundColor Yellow
