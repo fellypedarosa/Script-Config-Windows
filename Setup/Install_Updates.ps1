@@ -6,13 +6,14 @@ UsoClient StartScan
 UsoClient StartDownload
 UsoClient StartInstall
 
-Write-Host "`n==> Aguardando 30 minutos para aplicacao das atualizacoes..." -ForegroundColor Cyan
-Start-Sleep -Seconds 1800
-
 # Cria o arquivo de confirmação
-$updateFlag = "$PSScriptRoot\..\Dependencias\Update\update.txt"
+$updateFlag = "C:\SCRIPT.2.0\confirm\update.txt"
 New-Item -Path $updateFlag -ItemType File -Force | Out-Null
 Set-Content -Path $updateFlag -Value "Sim"
+
+# Aguarda a conclusão do processo de atualização
+Write-Host "`n==> Aguardando 30 minutos para aplicacao das atualizacoes..." -ForegroundColor Cyan
+Start-Sleep -Seconds 300 #1800
 
 #Permissão para executar scripts
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force

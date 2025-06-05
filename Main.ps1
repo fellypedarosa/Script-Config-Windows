@@ -1,6 +1,6 @@
 # MAIN.PS1 - Script principal de automação Rastek
 
-# 1. CONFIGURAÇÕES INICIAIS (energia, atualização, repositórios)
+# 1. CONFIGURAÇÕES INICIAIS (energia, Winget)
 Write-Host "`n==> Executando configuracoes iniciais..." -ForegroundColor Cyan
 & "$PSScriptRoot\Setup\Config.ps1"
 
@@ -15,21 +15,22 @@ else {
 Write-Host "`n==> Renomeando computador..." -ForegroundColor Cyan
 & "$PSScriptRoot\Setup\Rename.ps1"
 }
-# Verifica se os arquivos de confirmação já existem
+# VERIFICA SE OS ARQUIVOS DE CONFIRMAÇÃO EXISTEM
 $advFile = Join-Path $confirmPath "ADV.txt"
 $officeFile = Join-Path $confirmPath "Office.txt"
+$updateFlagPath = Join-Path $confirmPath "update.txt"
 
 if ((Test-Path $advFile) -and (Test-Path $officeFile)) {
     Write-Host "`n==> Respostas ja confirmadas anteriormente. Pulando instalacoes opcionais..." -ForegroundColor Green
 }
+
+# 3. CONFIRMA INSTALAÇÕES OPCIONAIS (Apps de ADV e Office 365.)
 else {
-    # 3. CONFIRMA INSTALAÇÕES OPCIONAIS (Apps de ADV e Office 365.)
     Write-Host "`n==> Perguntas sobre instalacoes opcionais..." -ForegroundColor Cyan
     & "$PSScriptRoot\Setup\Confirm_Options.ps1"
 }
 
 # 4. VERIFICA SE DEVE INSTALAR ATUALIZACOES DO WINDOWS
-$updateFlagPath = "$PSScriptRoot\Dependencias\Update\update.txt"
 if ((Test-Path $updateFlagPath) -and ((Get-Content $updateFlagPath) -eq 'Sim')) {
     Write-Host "`n==> Windows ja atualizado. Pulando atualizacoes..." -ForegroundColor Green
 }
@@ -39,8 +40,8 @@ else {
     exit
 }
 # 5. INSTALA SOFTWARES ESSENCIAIS COM WINGET (Chrome, Adobe, etc.)
-Write-Host "`n==> Instalando softwares principais..." -ForegroundColor Cyan
-& "$PSScriptRoot\Instaladores\Install_Softwares.ps1"
+#Write-Host "`n==> Instalando softwares principais..." -ForegroundColor Cyan
+#& "$PSScriptRoot\Instaladores\Install_Softwares.ps1"
 
 # 6. INSTALAÇÃO OPCIONAL - OFFICE
 $OfficeFile = Join-Path $ConfirmPath "Office.txt"
@@ -55,9 +56,9 @@ if ((Test-Path $advFile) -and ((Get-Content $advFile) -eq 'Sim')) {
     & "$PSScriptRoot\Instaladores\Install_ADV.ps1"
 }
 
-# 8. REINICIAR SISTEMA
-Write-Host "`n==> Reiniciando sistema em 15 segundos..." -ForegroundColor Yellow
-shutdown.exe -r -f -t 15
+# 8. Finalizando o script
+Write-Host "`n==> Finalizando o Script 2.0..." -ForegroundColor Cyan
+& "$PSScriptRoot\Final\Fim.ps1"
 
 #Temp
 #Write-Host "`nPressione qualquer tecla para continuar..." -ForegroundColor Yellow

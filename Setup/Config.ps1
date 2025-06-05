@@ -7,7 +7,10 @@ powercfg -change -monitor-timeout-dc 0
 powercfg -change -standby-timeout-ac 0
 powercfg -change -standby-timeout-dc 0
 
-# 2. Verificar se winget esta instalado
+# 2. Desativar inicialização rápida
+powercfg /h off
+
+# 3. Verificar se winget esta instalado
 Write-Host "Verificando se o winget esta instalado..."
 if (Get-Command winget -ErrorAction SilentlyContinue) {
     Write-Host "Winget disponivel."
@@ -30,5 +33,5 @@ if (Get-Command winget -ErrorAction SilentlyContinue) {
     Write-Host "Instalacao concluida. Continuando a execucao..." -ForegroundColor Green
 }
 
-# 3. Politica de execucao
+# 4. Politica de execucao
  #Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
