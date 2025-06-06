@@ -1,0 +1,22 @@
+# Ignorar arquivos grandes
+Dependencias/ADV/pjeoffice.exe
+Dependencias/winget.Msixbundle
+
+# Ignorar instaladores e arquivos pesados em geral
+*.exe
+*.msi
+*.msixbundle
+*.iso
+*.zip
+
+# Arquivos do Windows
+Thumbs.db
+Desktop.ini
+
+# Pastas temporárias e de sistema
+*.log
+*.tmp
+*.bak
+__pycache__/
+node_modules/
+.DS_Store
