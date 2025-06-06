@@ -47,3 +47,6 @@ Alguns arquivos não foram incluídos neste repositório devido ao tamanho exced
 ## 📞 Suporte
 
 Para mais informações ou sugestões de melhoria, sinta-se à vontade para abrir uma issue neste repositório.
+
+![image](https://github.com/user-attachments/assets/96264f9f-1ce2-498d-bf31-241451265f23)
+
