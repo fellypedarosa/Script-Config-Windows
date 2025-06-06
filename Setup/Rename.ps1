@@ -1,5 +1,5 @@
 #Renomeia computador
-$NewHostName = Read-Host -Prompt 'Coloque o novo nome do Computador: '
+$NewHostName = Read-Host -Prompt ' Coloque o novo nome do Computador: '
 $OldHostName = hostname
 Rename-Computer -ComputerName "$OldHostName" -NewName "$NewHostName" -Force -PassThru
 

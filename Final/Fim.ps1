@@ -14,16 +14,20 @@ Try {
     # Cria (ou sobrescreve) a entrada RunOnce
     Set-ItemProperty -Path $runOnceKey -Name $runOnceName -Value $removeCmd -Force
 
-    Write-Host "==> Agendado. no proximo login, a pasta '$folderPath' sera removida." -ForegroundColor Green
+    Write-Host " Agendado. no proximo login, a pasta '$folderPath' sera removida." -ForegroundColor Green
 }
 Catch {
-    Write-Warning "Nao foi possivel criar a entrada RunOnce: $_"
+    Write-Warning " Nao foi possivel criar a entrada RunOnce: $_" -ForegroundColor Red
 }
 
-# Cria usuario rtk.sup se não existir e adiciona uma senha
-net user rtk.sup r4st3kt1!
-Write-Host "`n==> Ajustado usuario rtk.sup..." -ForegroundColor Green
+# Adiciona uma senha no usuario
+# net user seu.usuario sua.senha 
+Write-Host "`n Ajustado usuario..." -ForegroundColor Green
+Start-Sleep -Seconds 5
 
-Write-Host "`n==> Reiniciando sistema em 10 segundos..." -ForegroundColor Yellow
+Write-Host "`n==> Finalizando o SCRIPT 2.0. Espero que tenha gostado : )" -ForegroundColor Cyan
+Start-Sleep -Seconds 15
+
+Write-Host "`n==> Reiniciando sistema em 10 segundos..." -ForegroundColor Green
 Start-Sleep -Seconds 10
 Restart-Computer -Force

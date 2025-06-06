@@ -12,7 +12,7 @@ New-Item -Path $updateFlag -ItemType File -Force | Out-Null
 Set-Content -Path $updateFlag -Value "Sim"
 
 # Aguarda a conclusão do processo de atualização
-Write-Host "`n==> Aguardando 30 minutos para aplicacao das atualizacoes..." -ForegroundColor Cyan
+Write-Host "`n==> Aguardando 30 minutos para aplicacao das atualizacoes..." -ForegroundColor DarkCyan
 Start-Sleep -Seconds 1800
 
 #Permissão para executar scripts

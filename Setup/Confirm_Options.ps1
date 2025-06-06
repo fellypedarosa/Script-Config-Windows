@@ -6,10 +6,10 @@ if (!(Test-Path -Path $confirmPath)) {
 
 # Pergunta se deseja instalar o Office 365
 do {
-    $office = Read-Host "Deseja instalar o Office 365? (S/N)"
-} while ($office -notin @("S", "N"))
+    $office = Read-Host " Deseja instalar o Office 365? (sim/nao)"
+} while ($office -notin @("sim", "nao"))
 
-if ($office -eq "S") {
+if ($office -eq "sim") {
     "Sim" | Out-File -FilePath "$confirmPath\Office.txt" -Encoding UTF8
 } else {
     "Nao" | Out-File -FilePath "$confirmPath\Office.txt" -Encoding UTF8
@@ -17,10 +17,10 @@ if ($office -eq "S") {
 
 # Pergunta se o computador e para advogado
 do {
-    $advogado = Read-Host "Este computador sera utilizado por advogado? (S/N)"
-} while ($advogado -notin @("S", "N"))
+    $advogado = Read-Host " Este computador precisa dos apps de advogados? (sim/nao)"
+} while ($advogado -notin @("sim", "nao"))
 
-$adv = if ($advogado -eq "S") { "Sim" } else { "Nao" }
+$adv = if ($advogado -eq "sim") { "Sim" } else { "Nao" }
 
 $adv     | Out-File -FilePath "$confirmPath\ADV.txt" -Encoding UTF8
 

@@ -8,7 +8,7 @@ $confirmPath = "C:\SCRIPT.2.0\confirm"
 $renameFile = Join-Path $confirmPath "rename.txt"
 
 if ((Test-Path $renameFile)) {
-    Write-Host "`n==> Nome atualizado..." -ForegroundColor Green
+    Write-Host "`n==> Nome atualizado..." -ForegroundColor Magenta
 }
 # 2. RENOMEIA O COMPUTADOR
 else {
@@ -21,7 +21,7 @@ $officeFile = Join-Path $confirmPath "Office.txt"
 $updateFlagPath = Join-Path $confirmPath "update.txt"
 
 if ((Test-Path $advFile) -and (Test-Path $officeFile)) {
-    Write-Host "`n==> Respostas ja confirmadas anteriormente. Pulando instalacoes opcionais..." -ForegroundColor Green
+    Write-Host "`n Respostas sobre instalacoes opcionais ja confirmadas anteriormente." -ForegroundColor Green
 }
 
 # 3. CONFIRMA INSTALAÇÕES OPCIONAIS (Apps de ADV e Office 365.)
@@ -32,29 +32,30 @@ else {
 
 # 4. VERIFICA SE DEVE INSTALAR ATUALIZACOES DO WINDOWS
 if ((Test-Path $updateFlagPath) -and ((Get-Content $updateFlagPath) -eq 'Sim')) {
-    Write-Host "`n==> Windows ja atualizado. Pulando atualizacoes..." -ForegroundColor Green
+    Write-Host " Windows ja atualizado. Pulando atualizacoes..." -ForegroundColor Green
 }
 else {
-    Write-Host "`n==> Atualizando o Windows. Essa etapa pode demorar..." -ForegroundColor Yellow
+    Write-Host "`n==> Atualizando o Windows. Essa etapa pode demorar..." -ForegroundColor Cyan
     & "$PSScriptRoot\Setup\Install_Updates.ps1"
     exit
 }
-# 5. INSTALA SOFTWARES ESSENCIAIS COM WINGET (Chrome, Adobe, etc.)
-Write-Host "`n==> Instalando softwares principais..." -ForegroundColor Cyan
-& "$PSScriptRoot\Instaladores\Install_Softwares.ps1"
 
-# 6. INSTALAÇÃO OPCIONAL - OFFICE
+# 5. INSTALAÇÃO OPCIONAL - OFFICE
 $OfficeFile = Join-Path $ConfirmPath "Office.txt"
 if ((Test-Path $OfficeFile) -and ((Get-Content $OfficeFile) -eq 'Sim')) {
-    Write-Host "`n==> Certo vamos instalar o Office 365..." -ForegroundColor Cyan
+    Write-Host "`n==> Certo, vamos instalar o Office 365..." -ForegroundColor Cyan
     & "$PSScriptRoot\Instaladores\Install_Office.ps1"
 }
 
-# 7. INSTALAÇÃO OPCIONAL - ADVOGADOS
+# 6. INSTALAÇÃO OPCIONAL - ADVOGADOS
 if ((Test-Path $advFile) -and ((Get-Content $advFile) -eq 'Sim')) {
     Write-Host "`n==> Instalando apps dos advogados..." -ForegroundColor Cyan
     & "$PSScriptRoot\Instaladores\Install_ADV.ps1"
 }
+
+# 7. INSTALA SOFTWARES ESSENCIAIS COM WINGET (Chrome, Adobe, etc.)
+Write-Host "`n==> Instalando softwares principais..." -ForegroundColor Cyan
+& "$PSScriptRoot\Instaladores\Install_Softwares.ps1"
 
 # 8. Finalizando o script
 Write-Host "`n==> Finalizando o Script 2.0..." -ForegroundColor Cyan
