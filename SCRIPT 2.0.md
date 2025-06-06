@@ -4,7 +4,7 @@
  - Copie a pasta SCRIPT.2.0 para o C:\
  - Entre na pasta e execute o SCRIPT 2.0.bat como administrador.
 
- *Sugestão*: Deixe o usuario rtk.sup sem senha. Assim o Script 2.0 poderá executar automaticamente após o reboot. (Ao finalizar o script ele irá definir a senha do usuario).
+ *Sugestão*: Deixe o usuario (USUARIO QUE QUISER) sem senha. Assim o Script 2.0 poderá executar automaticamente após o reboot. (Ao finalizar o script ele irá definir a senha do usuario).
 
 
 ## Agora veja as funcionalidades presentes no SCRIPT 2.0:
