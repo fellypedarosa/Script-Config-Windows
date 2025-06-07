@@ -19,7 +19,7 @@ Este projeto contém um conjunto de scripts em PowerShell projetados para automa
 2. Execute o arquivo `SCRIPT 2.0.bat` como administrador
 3. Siga as instruções exibidas durante a execução
 
-> **Importante:** recomenda-se deixar o usuário `usuario que executa o script` sem senha antes de iniciar. O script define a senha automaticamente no final da execução.
+> **Importante:** recomenda-se deixar o usuário `usuario que executa o script` sem senha antes de iniciar. O script pode definir uma senha automaticamente no final da execução caso seja adicionado no arquivo `Fim.ps1`.
 
 ---
 
